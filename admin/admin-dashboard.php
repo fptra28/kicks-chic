@@ -25,7 +25,7 @@
                 <i class='bx bxs-user' ></i>
             </div>
             <a href="/logout">
-                <button class="logout">LOG OUT</button>
+                <button class="logout">LOGOUT</button>
             </a>
         </div>
     </div>
