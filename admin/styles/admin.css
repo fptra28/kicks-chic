@@ -24,7 +24,7 @@ body {
     justify-content: center;
     height: 160px;
     background-color: #C1B59F;
-    border-bottom: 1px solid #000
+    border-bottom: 1px solid #000;
 }
 
 .logo img {
@@ -44,7 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-top, border-bottom: 1px solid #000;
+    border-bottom: 1px solid #000;
 }
 
 .side-menu a {
@@ -71,4 +71,13 @@ body {
     margin-bottom: 10px;
     font-size: 24px;
     color: #000;
+}
+
+.logout {
+    height: 40px;
+    width: 200px;
+    background-color: darkred;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bolder;
 }
