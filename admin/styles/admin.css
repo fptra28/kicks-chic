@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    background-color: #eee;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    height: 100vh;
+    color: #5F6368;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #000;
+}
+
+.logo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    background-color: #C1B59F;
+    border-bottom: 1px solid #000;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.brand-name {
+    color: #000;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.side-menu {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.side-menu a {
+    color: #5F6368;
+    text-decoration: none;
+    font-size: 22px;
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.side-menu a:hover {
+    color: #000;
+}
+
+.side-menu a.active {
+    color: #000;
+}
+
+.account {
+    text-align: center;
+}
+
+.profile {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #000;
+}
+
+.logout {
+    height: 40px;
+    width: 200px;
+    background-color: darkred;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+}
