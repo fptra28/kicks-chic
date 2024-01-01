@@ -78,3 +78,30 @@ body {
     color: #000;
 }
 
+.account .logout{
+    color: red;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.account .logout:hover{
+    color: darkred;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+}
+
+main {
+    flex: 1;
+    padding: 25px;
+    margin-left: 250px;
+}
+
+.title{
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 1px 25px;
+}

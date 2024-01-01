@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../admin/styles/admin.css">
     <title>Home | Admin</title>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="logo">
@@ -22,7 +24,7 @@
         </div>
         <div class="account">
             <div class="profile">
-                <i class='bx bxs-user' ></i>
+                <i class='bx bxs-user'></i>
             </div>
             <a href="/logout" class="logout">
                 LOGOUT
@@ -30,7 +32,13 @@
         </div>
     </div>
     <main>
-        
+        <div class="title">
+            <h1>DASHBOARD</h1>
+        </div>
+        <div class="total">
+            
+        </div>
     </main>
 </body>
+
 </html>
