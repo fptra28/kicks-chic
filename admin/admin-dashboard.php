@@ -24,8 +24,8 @@
             <div class="profile">
                 <i class='bx bxs-user' ></i>
             </div>
-            <a href="/logout">
-                <button class="logout">LOGOUT</button>
+            <a href="/logout" class="logout">
+                LOGOUT
             </a>
         </div>
     </div>
