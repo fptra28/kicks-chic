@@ -36,6 +36,29 @@
             <h1>DASHBOARD</h1>
         </div>
         <div class="total">
+            <div class="report">
+                <img class="logo-total" src="../assets/lg-total-sales.png" alt="logo-sales" />
+                <div class="content">
+                    <div class="text-wrapper">Total Sales</div>
+                    <div class="data">Rp. 1.523.644.000</div>
+                </div>
+            </div>
+            <div class="report">
+                <img class="logo-total" src="../assets/lg-total-orders.png" alt="logo-orders" />
+                <div class="content">
+                    <div class="text-wrapper">Total Orders</div>
+                    <div class="data">2809</div>
+                </div>
+            </div>
+            <div class="report">
+                <img class="logo-total" src="../assets/lg-total-product.png" alt="logo-product" />
+                <div class="content">
+                    <div class="text-wrapper">Total Product</div>
+                    <div class="text-wrapper-2">30 Product</div>
+                </div>
+            </div>
+        </div>
+        <div class="latest-order">
             
         </div>
     </main>
