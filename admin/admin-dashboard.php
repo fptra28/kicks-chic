@@ -54,12 +54,86 @@
                 <img class="logo-total" src="../assets/lg-total-product.png" alt="logo-product" />
                 <div class="content">
                     <div class="text-wrapper">Total Product</div>
-                    <div class="text-wrapper-2">30 Product</div>
+                    <div class="data">30 Product</div>
                 </div>
             </div>
         </div>
         <div class="latest-order">
-            
+            <div class="subtitle">
+                Latest Orders
+            </div>
+            <table>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+                <tr>
+                    <td>2809</td>
+                    <td class="cus-name">Muhammad Faturrahman Putra</td>
+                    <td>087778376988</td>
+                    <td>Rp. 5.588.000</td>
+                    <td>
+                        <div class="delivered">DELIVERED</div>
+                    </td>
+                    <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
+                </tr>
+            </table>
         </div>
     </main>
 </body>

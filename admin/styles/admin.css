@@ -169,3 +169,45 @@ main {
     letter-spacing: 0;
     line-height: normal;
 }
+
+.latest-order {
+    background-color: #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.subtitle{
+    padding-top: 20px;
+    margin-left: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+}
+
+td{
+    padding: 20px 0px;
+    font-size: 18px;
+}
+
+.cus-name{
+    font-weight: bold;
+}
+
+.delivered{
+    background-color: rgb(0, 255, 0);
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 25px;
+    padding: 1px 10px;
+}
+
+.more-info{
+    height: 16px;
+    margin: 0px 20px;
+}
