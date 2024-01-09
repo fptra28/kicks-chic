@@ -67,24 +67,24 @@
                     <td>2809</td>
                     <td class="cus-name">Muhammad Faturrahman Putra</td>
                     <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td>IDR 5.588.000</td>
                     <td>
                         <div class="delivered">DELIVERED</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
-                    <td>2809</td>
-                    <td class="cus-name">Muhammad Faturrahman Putra</td>
-                    <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td>2808</td>
+                    <td class="cus-name">Nasyifa Choirunisa</td>
+                    <td>082012802080</td>
+                    <td>IDR 1.588.000</td>
                     <td>
-                        <div class="delivered">DELIVERED</div>
+                        <div class="pending">DELIVERED</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
-                    <td>2809</td>
+                    <td>2807</td>
                     <td class="cus-name">Muhammad Faturrahman Putra</td>
                     <td>087778376988</td>
                     <td>Rp. 5.588.000</td>

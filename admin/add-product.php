@@ -1,95 +1,37 @@
 <?php
 include './koneksi-admin/koneksi-admin.php';
 
-$fetch_profile = [];
+$nama = $_POST['shoes_name'];
+$details = $_POST['details'];
+$brand = $_POST['brand_shoes'];
+$harga = $_POST['price'];
 
-if (isset($_COOKIE['admin_id'])) {
-    $admin_id = $_COOKIE['admin_id'];
+// Ambil informasi tentang gambar yang diunggah
+$img_1_name = $_FILES['img_1']['name'];
+$img_1_tmp = $_FILES['img_1']['tmp_name'];
+$img_1_folder = './uploaded_files/' . $img_1_name; // Ubah path dengan path yang sesuai di server Anda
+
+// Pindahkan file yang diunggah ke folder tujuan
+move_uploaded_file($img_1_tmp, $img_1_folder);
+
+// Buat query SQL untuk memasukkan data ke database
+$sql = "INSERT INTO shoes (shoes_name, brand_shoes, details, price, img_1) VALUES (?, ?, ?, ?, ?)";
+
+// Persiapkan pernyataan SQL
+$stmt = $conn->prepare($sql);
+
+// Bind parameter ke pernyataan SQL
+$stmt->bind_param("sssss", $nama, $brand, $details, $harga, $img_1_folder);
+
+// Eksekusi pernyataan SQL
+if ($stmt->execute()) {
+    echo "Data produk berhasil ditambahkan.";
 } else {
-    $admin_id = '';
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-if (isset($_POST['add_product'])) {
-    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
-    $harga = filter_input(INPUT_POST, 'harga', FILTER_SANITIZE_STRING);
-    $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
-    $details = filter_input(INPUT_POST, 'details', FILTER_SANITIZE_STRING);
-
-    $img_1 = $_FILES['img_1']['name'];
-    $img_1_size = $_FILES['img_1']['size'];
-    $img_1_tmp_name = $_FILES['img_1']['tmp_name'];
-    $img_1_folder = '../uploaded_files/' . $img_1;
-
-    $img_2 = $_FILES['img_2']['name'];
-    $img_2_size = $_FILES['img_2']['size'];
-    $img_2_tmp_name = $_FILES['img_2']['tmp_name'];
-    $img_2_folder = '../uploaded_files/' . $img_2;
-
-    $img_3 = $_FILES['img_3']['name'];
-    $img_3_size = $_FILES['img_3']['size'];
-    $img_3_tmp_name = $_FILES['img_3']['tmp_name'];
-    $img_3_folder = '../uploaded_files/' . $img_3;
-
-    $img_4 = $_FILES['img_4']['name'];
-    $img_4_size = $_FILES['img_4']['size'];
-    $img_4_tmp_name = $_FILES['img_4']['tmp_name'];
-    $img_4_folder = '../uploaded_files/' . $img_4;
-
-    $img_5 = $_FILES['img_5']['name'];
-    $img_5_size = $_FILES['img_5']['size'];
-    $img_5_tmp_name = $_FILES['img_5']['tmp_name'];
-    $img_5_folder = '../uploaded_files/' . $img_5;
-
-    $select_products = $koneksi->prepare("SELECT * FROM products WHERE nama = ?");
-    $select_products->bind_param('s', $nama);
-    $select_products->execute();
-    $select_products->store_result();
-
-    if ($select_products->num_rows > 0) {
-        $message = "Nama produk sudah ada!";
-    } else {
-        if ($img_1_size > 2000000 || $img_2_size > 2000000 || $img_3_size > 2000000) {
-            $message = "Ukuran gambar terlalu besar";
-        } else {
-            move_uploaded_file($img_1_tmp_name, $img_1_folder);
-            move_uploaded_file($img_2_tmp_name, $img_2_folder);
-            move_uploaded_file($img_3_tmp_name, $img_3_folder);
-
-            $insert_product = $koneksi->prepare("INSERT INTO products(nama, details, harga, kategori, img_1, img_2, img_3, img_4, img_5) VALUES (?,?,?,?,?,?,?)");
-            $insert_product->bind_param('sssssss', $nama, $details, $harga, $kategori, $img_1, $img_2, $img_3, $img_4, $img_5);
-            $insert_product->execute();
-
-            $message = "Yeay... Produk berhasil ditambahkan!";
-        }
-    }
-    header("Location: products.php");
-    exit();
-}
-
-if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $delete_product_image = $koneksi->prepare("SELECT * FROM products WHERE id = ?");
-    $delete_product_image->bind_param('i', $delete_id);
-    $delete_product_image->execute();
-    $result = $delete_product_image->get_result();
-    if ($result->num_rows > 0) {
-        $fetch_delete_image = $result->fetch_assoc();
-        unlink('../uploaded_files/' . $fetch_delete_image['img_11']);
-        unlink('../uploaded_files/' . $fetch_delete_image['img_2']);
-        unlink('../uploaded_files/' . $fetch_delete_image['img_3']);
-        $delete_product = $koneksi->prepare("DELETE FROM products WHERE id = ?");
-        $delete_product->bind_param('i', $delete_id);
-        $delete_product->execute();
-        $delete_cart = $koneksi->prepare("DELETE FROM cart WHERE product_id = ?");
-        $delete_cart->bind_param('i', $delete_id);
-        $delete_cart->execute();
-        $delete_wishlist = $koneksi->prepare("DELETE FROM wishlist WHERE product_id = ?");
-        $delete_wishlist->bind_param('i', $delete_id);
-        $delete_wishlist->execute();
-    }
-    header('location:products.php');
-    exit();
-}
+// Tutup koneksi database
+$conn->close();
 ?>
 
 
@@ -132,54 +74,58 @@ if (isset($_GET['delete'])) {
             <h1>ADD NEW PRODUCT</h1>
         </div>
         <div class="add-product-form">
-            <div class="form">
-                <h3>Product Name</h3>
-                <input type="text" name="" id="">
-            </div>
-            <div class="form">
-                <h3>Description</h3>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="form">
-                <h3>Upload Images (Require 5)</h3>
-                <div class="img-container">
-                    <div class="img">
-                        <input type="file">
-                    </div>
-                    <div class="img">
-                        <input type="file">
-                    </div>
-                    <div class="img">
-                        <input type="file">
-                    </div>
-                    <div class="img">
-                        <input type="file">
-                    </div>
-                    <div class="img">
-                        <input type="file">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form">
+                    <h3>Product Name</h3>
+                    <input type="text" name="shoes_name" id="nama"> <!-- Tambahkan atribut "name" yang sesuai -->
+                </div>
+                <div class="form">
+                    <h3>Description</h3>
+                    <textarea name="details" id="details" cols="30" rows="10"></textarea> <!-- Tambahkan atribut "name" yang sesuai -->
+                </div>
+                <div class="form">
+                    <h3>Upload Images (Require 5)</h3>
+                    <div class="img-container">
+                        <div class="img">
+                            <input type="file" name="img_1"> <!-- Tambahkan atribut "name" yang sesuai -->
+                        </div>
+                        <div class="img">
+                            <input type="file" name="img_2"> <!-- Tambahkan atribut "name" yang sesuai -->
+                        </div>
+                        <!-- Tambahkan input file untuk img_3, img_4, dan img_5 dengan atribut "name" yang sesuai -->
+                        <div class="img">
+                            <input type="file" name="img_3">
+                        </div>
+                        <div class="img">
+                            <input type="file" name="img_4">
+                        </div>
+                        <div class="img">
+                            <input type="file" name="img_5">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form">
-                <h3>Brand</h3>
-                <select class="brandlist" name="Brand" id="brand">
-                    <option value="Adidas">Adidas</option>
-                    <option value="Adidas">Asics</option>
-                    <option value="Adidas">Converse</option>
-                    <option value="Adidas">New Balance</option>
-                    <option value="Adidas">Nike</option>
-                    <option value="Adidas">Onitsuka Tiger</option>
-                    <option value="Adidas">Puma</option>
-                    <option value="Adidas">Reebok</option>
-                    <option value="Adidas">Vans</option>
-                </select>
-            </div>
-            <div class="form">
-                <h3>Price</h3>
-                <input type="text" name="" id="">
-            </div>
+                <div class="form">
+                    <h3>Brand</h3>
+                    <select class="brandlist" name="brand_shoes" id="brand"> <!-- Ubah atribut "id" dan "name" menjadi "kategori" -->
+                        <option value="Adidas">Adidas</option>
+                        <option value="Asics">Asics</option>
+                        <option value="Converse">Converse</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Onitsuka Tiger">Onitsuka Tiger</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Reebok">Reebok</option>
+                        <option value="Vans">Vans</option>
+                    </select>
+                </div>
+                <div class="form">
+                    <h3>Price</h3>
+                    <input type="text" name="price" id="harga"> <!-- Tambahkan atribut "name" yang sesuai -->
+                </div>
 
-            <button type="submit" onclick="submitForm()" class="btn btn-primary">Add Product</button>
+                <a href="./admin-product.php"><button type="submit" class="btn btn-primary" name="add_product">Add Product</button></a> <!-- Tambahkan atribut "name" yang sesuai -->
+            </form>
+
         </div>
     </main>
 </body>

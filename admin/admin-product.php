@@ -1,98 +1,3 @@
-<?php
-include './koneksi-admin/koneksi-admin.php';
-
-$fetch_profile = [];
-
-if (isset($_COOKIE['admin_id'])) {
-    $admin_id = $_COOKIE['admin_id'];
-} else {
-    $admin_id = '';
-}
-
-if (isset($_POST['add_product'])) {
-    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
-    $harga = filter_input(INPUT_POST, 'harga', FILTER_SANITIZE_STRING);
-    $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
-    $details = filter_input(INPUT_POST, 'details', FILTER_SANITIZE_STRING);
-
-    $img_1 = $_FILES['img_1']['name'];
-    $img_1_size = $_FILES['img_1']['size'];
-    $img_1_tmp_name = $_FILES['img_1']['tmp_name'];
-    $img_1_folder = '../uploaded_files/' . $img_1;
-
-    $img_2 = $_FILES['img_2']['name'];
-    $img_2_size = $_FILES['img_2']['size'];
-    $img_2_tmp_name = $_FILES['img_2']['tmp_name'];
-    $img_2_folder = '../uploaded_files/' . $img_2;
-
-    $img_3 = $_FILES['img_3']['name'];
-    $img_3_size = $_FILES['img_3']['size'];
-    $img_3_tmp_name = $_FILES['img_3']['tmp_name'];
-    $img_3_folder = '../uploaded_files/' . $img_3;
-
-    $img_4 = $_FILES['img_4']['name'];
-    $img_4_size = $_FILES['img_4']['size'];
-    $img_4_tmp_name = $_FILES['img_4']['tmp_name'];
-    $img_4_folder = '../uploaded_files/' . $img_4;
-
-    $img_5 = $_FILES['img_5']['name'];
-    $img_5_size = $_FILES['img_5']['size'];
-    $img_5_tmp_name = $_FILES['img_5']['tmp_name'];
-    $img_5_folder = '../uploaded_files/' . $img_5;
-
-    $select_products = $koneksi->prepare("SELECT * FROM products WHERE nama = ?");
-    $select_products->bind_param('s', $nama);
-    $select_products->execute();
-    $select_products->store_result();
-
-    if ($select_products->num_rows > 0) {
-        $message = "Nama produk sudah ada!";
-    } else {
-        if ($img_1_size > 2000000 || $img_2_size > 2000000 || $img_3_size > 2000000) {
-            $message = "Ukuran gambar terlalu besar";
-        } else {
-            move_uploaded_file($img_1_tmp_name, $img_1_folder);
-            move_uploaded_file($img_2_tmp_name, $img_2_folder);
-            move_uploaded_file($img_3_tmp_name, $img_3_folder);
-
-            $insert_product = $koneksi->prepare("INSERT INTO products(nama, details, harga, kategori, img_1, img_2, img_3, img_4, img_5) VALUES (?,?,?,?,?,?,?)");
-            $insert_product->bind_param('sssssss', $nama, $details, $harga, $kategori, $img_1, $img_2, $img_3, $img_4, $img_5);
-            $insert_product->execute();
-
-            $message = "Yeay... Produk berhasil ditambahkan!";
-        }
-    }
-    header("Location: products.php");
-    exit();
-}
-
-if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $delete_product_image = $koneksi->prepare("SELECT * FROM products WHERE id = ?");
-    $delete_product_image->bind_param('i', $delete_id);
-    $delete_product_image->execute();
-    $result = $delete_product_image->get_result();
-    if ($result->num_rows > 0) {
-        $fetch_delete_image = $result->fetch_assoc();
-        unlink('../uploaded_files/' . $fetch_delete_image['img_11']);
-        unlink('../uploaded_files/' . $fetch_delete_image['img_2']);
-        unlink('../uploaded_files/' . $fetch_delete_image['img_3']);
-        $delete_product = $koneksi->prepare("DELETE FROM products WHERE id = ?");
-        $delete_product->bind_param('i', $delete_id);
-        $delete_product->execute();
-        $delete_cart = $koneksi->prepare("DELETE FROM cart WHERE product_id = ?");
-        $delete_cart->bind_param('i', $delete_id);
-        $delete_cart->execute();
-        $delete_wishlist = $koneksi->prepare("DELETE FROM wishlist WHERE product_id = ?");
-        $delete_wishlist->bind_param('i', $delete_id);
-        $delete_wishlist->execute();
-    }
-    header('location:products.php');
-    exit();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -139,29 +44,25 @@ if (isset($_GET['delete'])) {
             </div>
         </div>
         <div class="product">
-            <?php
-            $show_products = $conn->query("SELECT * FROM shoes");
+        <?php for ($i = 0; $i < 1; $i++) : ?>
+                <?php if ($i % 5 === 0) : ?>
+                    <div class="product-row">
+                    <?php endif; ?>
 
-            if ($show_products->num_rows > 0) {
-                while ($fetch_products = $show_products->fetch_assoc()) {
-            ?>
-                    <div class="box">
-                        <img src="../uploaded_files/<?= $fetch_products['img_1']; ?>" alt="">
-                        <div class="nama"><?= $fetch_products['nama']; ?></div>
-                        <div class="harga">IDR <?= number_format($fetch_products['harga'], 2, ',', '.'); ?></div>
-                        <div class="kategori"><?= $fetch_products['kategori']; ?></div>
-                        <div class="details"><?= $fetch_products['details']; ?></div>
-                        <div class="flex-btn">
-                            <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">Update</a>
-                            <a href="products.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('Hapus produk ini?')">Hapus</a>
+                    <div class="product-view">
+                        <img class="" src="../assets/Product-Image/Adidas/samba/samba-og.png" alt="">
+                        <h3>Adidas Samba OG Cloud</h3>
+                        <p><strong>IDR 1.289.000,00</strong></p>
+                        <div class="button-container">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
                         </div>
                     </div>
-            <?php
-                }
-            } else {
-                echo '<p class="empty">Tidak ada produk ditambahkan!</p>';
-            }
-            ?>
+
+                    <?php if (($i + 1) % 5 === 0 || $i === 9) : ?>
+                    </div>
+                <?php endif; ?>
+            <?php endfor; ?>
         </div>
     </main>
 </body>
