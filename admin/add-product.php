@@ -101,7 +101,7 @@ if (isset($_GET['delete'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../admin/styles/admin.css">
-    <title>Product | Admin</title>
+    <title>Add Product | Admin</title>
 </head>
 
 <body>
@@ -129,39 +129,57 @@ if (isset($_GET['delete'])) {
     </div>
     <main>
         <div class="title">
-            <h1>PRODUCT</h1>
+            <h1>ADD NEW PRODUCT</h1>
         </div>
-        <div class="navigation">
-            <input class="searchBar" type="text" id="searchInput" placeholder="Search product...">
-            <div class="button-container">
-                <a href=""><button class="export"><i class="fas fa-file-export" style="margin-right: 5px;"></i>Export</button></a>
-                <a href="./add-product.php"><button class="add-product">ADD PRODUCT</button></a>
+        <div class="add-product-form">
+            <div class="form">
+                <h3>Product Name</h3>
+                <input type="text" name="" id="">
             </div>
-        </div>
-        <div class="product">
-            <?php
-            $show_products = $conn->query("SELECT * FROM shoes");
-
-            if ($show_products->num_rows > 0) {
-                while ($fetch_products = $show_products->fetch_assoc()) {
-            ?>
-                    <div class="box">
-                        <img src="../uploaded_files/<?= $fetch_products['img_1']; ?>" alt="">
-                        <div class="nama"><?= $fetch_products['nama']; ?></div>
-                        <div class="harga">IDR <?= number_format($fetch_products['harga'], 2, ',', '.'); ?></div>
-                        <div class="kategori"><?= $fetch_products['kategori']; ?></div>
-                        <div class="details"><?= $fetch_products['details']; ?></div>
-                        <div class="flex-btn">
-                            <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">Update</a>
-                            <a href="products.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('Hapus produk ini?')">Hapus</a>
-                        </div>
+            <div class="form">
+                <h3>Description</h3>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form">
+                <h3>Upload Images (Require 5)</h3>
+                <div class="img-container">
+                    <div class="img">
+                        <input type="file">
                     </div>
-            <?php
-                }
-            } else {
-                echo '<p class="empty">Tidak ada produk ditambahkan!</p>';
-            }
-            ?>
+                    <div class="img">
+                        <input type="file">
+                    </div>
+                    <div class="img">
+                        <input type="file">
+                    </div>
+                    <div class="img">
+                        <input type="file">
+                    </div>
+                    <div class="img">
+                        <input type="file">
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <h3>Brand</h3>
+                <select class="brandlist" name="Brand" id="brand">
+                    <option value="Adidas">Adidas</option>
+                    <option value="Adidas">Asics</option>
+                    <option value="Adidas">Converse</option>
+                    <option value="Adidas">New Balance</option>
+                    <option value="Adidas">Nike</option>
+                    <option value="Adidas">Onitsuka Tiger</option>
+                    <option value="Adidas">Puma</option>
+                    <option value="Adidas">Reebok</option>
+                    <option value="Adidas">Vans</option>
+                </select>
+            </div>
+            <div class="form">
+                <h3>Price</h3>
+                <input type="text" name="" id="">
+            </div>
+
+            <button type="submit" onclick="submitForm()" class="btn btn-primary">Add Product</button>
         </div>
     </main>
 </body>
