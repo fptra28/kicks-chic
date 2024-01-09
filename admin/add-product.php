@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="profile">
                 <i class='bx bxs-user'></i>
             </div>
-            <a href="/logout" class="logout">
+            <a href="./admin-login.php" class="logout">
                 LOGOUT
             </a>
         </div>

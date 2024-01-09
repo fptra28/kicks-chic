@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+body{
+    background-color: #eee;
+    font-family: 'Manrope', sans-serif;
+    margin: 0px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20px;
+}
+
+/* Left Section Styles */
+.left {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo */
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+/* Search Bar */
+.search-bar input {
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 750px;
+    margin-left: 10px;
+}
+
+/* Right Section Styles */
+.right {
+    display: flex;
+    align-items: center;
+}
+
+/* Cart Icon, Notification Icon, Profile */
+.cart-icon i,
+.notif-icon i,
+.profile i {
+    width: 30px;
+    height: auto;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #908471;
+}
+
+/* Line Gap */
+.line-gap {
+    height: 20px;
+    width: 1px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.banner-container{
+    display: flex;
+    flex-direction: row;
+    gap: auto;
+    padding: 60px;
+}
+
+.banner-container img{
+    height: 100%;
+    width: auto;
+}
+
+.banner-container img{
+    height: 125%;
+    width: auto;
+}
