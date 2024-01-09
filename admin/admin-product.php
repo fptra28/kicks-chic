@@ -4,16 +4,16 @@ include './koneksi-admin/koneksi-admin.php';
 $sql = "SELECT * FROM shoes";
 $result = $conn->query($sql);
 
-if(isset($_GET['action'])) {
+if (isset($_GET['action'])) {
     $action = $_GET['action'];
     $product_id = $_GET['id'];
 
-    if($action == 'edit') {
+    if ($action == 'edit') {
         // Lakukan sesuatu ketika tombol Edit ditekan
         // Misalnya, arahkan ke halaman edit dengan ID produk yang sesuai
         header("Location: edit-product.php?id=$product_id");
         exit();
-    } elseif($action == 'delete') {
+    } elseif ($action == 'delete') {
         // Lakukan sesuatu ketika tombol Delete ditekan
         // Misalnya, hapus produk dengan ID yang sesuai dari database
         include './koneksi-admin/koneksi-admin.php';
@@ -107,10 +107,12 @@ if (isset($_GET['delete'])) {
                     <div class="product-view">
                         <img class="" src="<?php echo $imagePath; ?>" alt="">
                         <h3><?php echo $productName; ?></h3>
-                        <p><strong>IDR <?php echo $price; ?>,00</strong></p>
-                        <div class="button-container">
-                            <button class="edit">Edit</button>
-                            <a href="admin-product.php?delete=<?php echo $row['shoes_name'];?>"><button class="delete" id="delete">Delete</button></a>
+                        <div class="bawah">
+                            <p><strong>IDR <?php echo $price; ?>,00</strong></p>
+                            <div class="button-container">
+                                <button class="edit">Edit</button>
+                                <a href="admin-product.php?delete=<?php echo $row['shoes_name']; ?>"><button class="delete" id="delete">Delete</button></a>
+                            </div>
                         </div>
                     </div>
             <?php

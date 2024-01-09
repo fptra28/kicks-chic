@@ -312,10 +312,11 @@ a{
 .product-view {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: fit-content;
-    width: calc(20% - 20px); /* Lebar setiap item (20% - 20px margin) */
+    height: 30rem;
+    width: calc(20% - 20px);
+    grid-template-columns: repeat(2, 200px);
     border: 1px solid rgb(119, 119, 119);
     padding: 10px;
     border-radius: 10px;
@@ -324,9 +325,14 @@ a{
 }
 
 .product-view img {
-    width: 158px;
-    height: 158px;
+    width: 100%;
     background-color: #EDEDED;
+}
+
+.bawah{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .button-container {
@@ -344,12 +350,14 @@ a{
 .product-view h3 {
     margin: 0px;
     padding: 0px;
+    text-align: center;
     font-weight: lighter;
 }
 
 .product-view p{
     margin: 0px;
     padding: 0px;
+    text-align: center;
     font-size: larger;
 }
 
