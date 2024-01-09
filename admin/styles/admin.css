@@ -261,6 +261,10 @@ td{
     gap: 10px;
 }
 
+a{
+    text-decoration: none;
+}
+
 .export,
 .add-product {
     display: flex;
@@ -269,6 +273,7 @@ td{
     height: 37px;
     border-radius: 12px;
     font-weight: bold;
+    text-decoration: none;
     text-decoration: none;
 }
 
@@ -319,7 +324,8 @@ td{
 }
 
 .product-view img {
-    width: 100%;
+    width: 158px;
+    height: 158px;
     background-color: #EDEDED;
 }
 

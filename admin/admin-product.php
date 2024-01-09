@@ -1,3 +1,53 @@
+<?php
+include './koneksi-admin/koneksi-admin.php';
+
+$sql = "SELECT * FROM shoes";
+$result = $conn->query($sql);
+
+if(isset($_GET['action'])) {
+    $action = $_GET['action'];
+    $product_id = $_GET['id'];
+
+    if($action == 'edit') {
+        // Lakukan sesuatu ketika tombol Edit ditekan
+        // Misalnya, arahkan ke halaman edit dengan ID produk yang sesuai
+        header("Location: edit-product.php?id=$product_id");
+        exit();
+    } elseif($action == 'delete') {
+        // Lakukan sesuatu ketika tombol Delete ditekan
+        // Misalnya, hapus produk dengan ID yang sesuai dari database
+        include './koneksi-admin/koneksi-admin.php';
+        $delete_sql = "DELETE FROM shoes WHERE shoes_name = $product_id";
+
+        if ($conn->query($delete_sql) === TRUE) {
+            echo "Produk berhasil dihapus";
+        } else {
+            echo "Error: " . $delete_sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    }
+}
+
+if (isset($_GET['delete'])) {
+    $delete_id = $_GET['delete'];
+
+    $delete_product = $conn->prepare("DELETE FROM shoes WHERE shoes_name = ?");
+    $delete_product->bind_param('s', $delete_id); // 's' adalah tipe data string
+    $delete_product->execute();
+
+    if ($delete_product->affected_rows > 0) {
+        echo "Produk berhasil dihapus";
+    } else {
+        echo "Error: Gagal menghapus produk";
+    }
+
+    $delete_product->close();
+    header('location:admin-product.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +77,7 @@
             <div class="profile">
                 <i class='bx bxs-user'></i>
             </div>
-            <a href="/logout" class="logout">
+            <a href="./admin-login.php" class="logout">
                 LOGOUT
             </a>
         </div>
@@ -44,25 +94,31 @@
             </div>
         </div>
         <div class="product">
-        <?php for ($i = 0; $i < 1; $i++) : ?>
-                <?php if ($i % 5 === 0) : ?>
-                    <div class="product-row">
-                    <?php endif; ?>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    // Gunakan data yang diambil dari database di sini
+                    $productName = $row['shoes_name'];
+                    $price = $row['price'];
+                    $imagePath = './foto_database/' . $row['img_1']; // Ubah ini dengan nama kolom yang menyimpan path gambar di tabel Anda
 
+                    // Tampilkan data di HTML
+            ?>
                     <div class="product-view">
-                        <img class="" src="../assets/Product-Image/Adidas/samba/samba-og.png" alt="">
-                        <h3>Adidas Samba OG Cloud</h3>
-                        <p><strong>IDR 1.289.000,00</strong></p>
+                        <img class="" src="<?php echo $imagePath; ?>" alt="">
+                        <h3><?php echo $productName; ?></h3>
+                        <p><strong>IDR <?php echo $price; ?>,00</strong></p>
                         <div class="button-container">
                             <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
+                            <a href="admin-product.php?delete=<?php echo $row['shoes_name'];?>"><button class="delete" id="delete">Delete</button></a>
                         </div>
                     </div>
-
-                    <?php if (($i + 1) % 5 === 0 || $i === 9) : ?>
-                    </div>
-                <?php endif; ?>
-            <?php endfor; ?>
+            <?php
+                }
+            } else {
+                echo "Tidak ada data yang ditemukan";
+            }
+            ?>
         </div>
     </main>
 </body>

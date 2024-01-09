@@ -1,3 +1,12 @@
+<?php
+include './koneksi-admin/koneksi-admin.php';
+
+$sql = "SELECT COUNT(*) as total_records FROM shoes";
+
+// Menjalankan query
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +24,8 @@
             <span class="brand-name">Kicks & Chic</span>
         </div>
         <div class="side-menu">
-            <a href="./admin-dashboard.php">Dashboard</a>
-            <a href="./admin-product.php" class="active">Products</a>
+            <a href="./admin-dashboard.php" class="active">Dashboard</a>
+            <a href="./admin-product.php">Products</a>
             <a href="./admin-orders.php">Orders</a>
             <a href="./admin-reviews.php">Reviews</a>
             <a href="./admin-transactions.php">Transaction</a>
@@ -26,7 +35,7 @@
             <div class="profile">
                 <i class='bx bxs-user'></i>
             </div>
-            <a href="/logout" class="logout">
+            <a href="./admin-login.php" class="logout">
                 LOGOUT
             </a>
         </div>
@@ -54,7 +63,16 @@
                 <img class="logo-total" src="../assets/lg-total-product.png" alt="logo-product" />
                 <div class="content">
                     <div class="text-wrapper">Total Product</div>
-                    <div class="data">30 Product</div>
+                    <div class="data">
+                    <?php
+                    if ($result->num_rows > 0) {
+                        // Output jumlah record
+                        $row = $result->fetch_assoc();
+                        echo $row["total_records"];
+                    } else {
+                        echo "Tidak ada record dalam tabel.";
+                    }?>
+                    </div>
                 </div>
             </div>
         </div>
