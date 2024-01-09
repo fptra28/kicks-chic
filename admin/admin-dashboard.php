@@ -15,12 +15,12 @@
             <span class="brand-name">Kicks & Chic</span>
         </div>
         <div class="side-menu">
-            <a href="/admin/admin-dashboard.php" class="active">Dashboard</a>
-            <a href="/product">Products</a>
-            <a href="/orders">Orders</a>
-            <a href="/reviews">Reviews</a>
-            <a href="/transactions">Transaction</a>
-            <a href="/hot-offers">Hot Offers</a>
+            <a href="./admin-dashboard.php">Dashboard</a>
+            <a href="./admin-product.php" class="active">Products</a>
+            <a href="./admin-orders.php">Orders</a>
+            <a href="./admin-reviews.php">Reviews</a>
+            <a href="./admin-transactions.php">Transaction</a>
+            <a href="./admin-hot-offers.php">Hot Offers</a>
         </div>
         <div class="account">
             <div class="profile">

@@ -211,3 +211,141 @@ td{
     height: 16px;
     margin: 0px 20px;
 }
+
+/*Product Page*/
+.navigation {
+    display: flex;
+    justify-content: space-between; /* Untuk menjaga jarak antara elemen */
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.searchBar {
+    width: 70rem;
+    border-radius: 12px;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.export,
+.add-product {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    height: 37px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.export {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+}
+
+.export:hover {
+    background-color: gray;
+    color: black;
+}
+
+.add-product {
+    background-color: rgb(55, 55, 255);
+    color: white;
+    border: none;
+}
+
+.add-product:hover {
+    background-color: blue;
+}
+
+.product {
+    display: flex;
+    flex-wrap: wrap; /* Mengizinkan wrapping item-item */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 15px;
+    padding: 20px;
+    gap: 20px; /* Spasi antar item */
+}
+
+.product-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: calc(20% - 20px); /* Lebar setiap item (20% - 20px margin) */
+    border: 1px solid rgb(119, 119, 119);
+    padding: 10px;
+    border-radius: 10px;
+    gap: 20px;
+    box-sizing: border-box; /* Memastikan ukuran termasuk border */
+}
+
+.product-view img {
+    width: 100%;
+    background-color: #EDEDED;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.product-row {
+    display: flex;
+    flex-wrap: nowrap; /* Tetap ke samping */
+    width: 100%; /* Memastikan baris baru memenuhi lebar */
+    gap: 20px; /* Spasi antar item */
+}
+
+.product-view h3 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: lighter;
+}
+
+.product-view p{
+    margin: 0px;
+    padding: 0px;
+    font-size: larger;
+}
+
+.product-view .edit {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 20px;
+    font-size: large;
+    border: 1px solid #5f6368;
+    color: #5f6368;
+    background-color: #00000000;
+}
+
+.product-view .edit:hover {
+    background-color: #5F6368;
+    color: #fff;
+}
+
+.product-view .delete {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 20px;
+    font-size: large;
+    border: 1px solid red;
+    color: red;
+    background-color: #00000000;
+}
+
+.product-view .delete:hover {
+    background-color: red;
+    color: white;
+}
