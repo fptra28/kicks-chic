@@ -1,19 +1,3 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "kicks-chic";
-
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,8 +50,9 @@ if ($conn->connect_error) {
                     <?php endif; ?>
 
                     <div class="product-view">
-                        <img src="../assets/Product-Image/Adidas/samba/samba-og.png" alt="">
+                        <img class="" src="../assets/Product-Image/Adidas/samba/samba-og.png" alt="">
                         <h3>Adidas Samba OG Cloud</h3>
+                        <p></p>
                         <p><strong>IDR 1.289.000,00</strong></p>
                         <div class="button-container">
                             <button class="edit">Edit</button>
