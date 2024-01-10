@@ -97,55 +97,55 @@ $result = $conn->query($sql);
                     <td>082012802080</td>
                     <td>IDR 1.588.000</td>
                     <td>
-                        <div class="pending">DELIVERED</div>
+                        <div class="pending">PENDING</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
                     <td>2807</td>
-                    <td class="cus-name">Muhammad Faturrahman Putra</td>
-                    <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td class="cus-name">Diego Oliver Hernanto</td>
+                    <td>082218388332</td>
+                    <td>Rp. 3.588.000</td>
                     <td>
                         <div class="delivered">DELIVERED</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
-                    <td>2809</td>
-                    <td class="cus-name">Muhammad Faturrahman Putra</td>
-                    <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td>2806</td>
+                    <td class="cus-name">Annurrafiq Martasi</td>
+                    <td>089821389231</td>
+                    <td>Rp. 1.200.000</td>
                     <td>
-                        <div class="delivered">DELIVERED</div>
+                        <div class="cancel">CANCELED</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
-                    <td>2809</td>
-                    <td class="cus-name">Muhammad Faturrahman Putra</td>
-                    <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td>2805</td>
+                    <td class="cus-name">Muhammad Daffa Fachreza</td>
+                    <td>082145235352</td>
+                    <td>Rp. 1.336.000</td>
                     <td>
-                        <div class="delivered">DELIVERED</div>
+                        <div class="arrive">ARRIVED</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
-                    <td>2809</td>
-                    <td class="cus-name">Muhammad Faturrahman Putra</td>
-                    <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td>2804</td>
+                    <td class="cus-name">Ferdy Thursyandi Ontoseno</td>
+                    <td>086627712131</td>
+                    <td>Rp. 2.100.000</td>
                     <td>
-                        <div class="delivered">DELIVERED</div>
+                        <div class="arrive">ARRIVED</div>
                     </td>
                     <td><img class="more-info" src="../assets/three-dots.svg" alt="more-info"></td>
                 </tr>
                 <tr>
-                    <td>2809</td>
-                    <td class="cus-name">Muhammad Faturrahman Putra</td>
-                    <td>087778376988</td>
-                    <td>Rp. 5.588.000</td>
+                    <td>2803</td>
+                    <td class="cus-name">Azhar Damarhadi</td>
+                    <td>081233544543</td>
+                    <td>Rp. 4.988.000</td>
                     <td>
                         <div class="delivered">DELIVERED</div>
                     </td>

@@ -1,3 +1,11 @@
+<?php
+include './koneksi-user/koneksi-user.php';
+
+$sql = "SELECT * FROM shoes";
+$result = $conn->query($sql);
+$count = 0;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,11 +41,103 @@
         </div>
     </nav>
     <main>
-        <div class="banner-container">
-            <img src="../assets/bannerkiri.png" alt="banner1">
-            <img src="../assets/bannerkanan.png" alt="banner2">
+        <div class="banner">
+            <img class="frame-kiri" src="../assets/Banner-1.jpg" />
+            <img class="frame-kanan" src="../assets/Promo-1.jpg" />
+        </div>
+        <div class="title">
+            <h1>WELCOME TO KICKS & CHIC</h1>
+            <p>Home of quality shoes from many brands</p>
+        </div>
+        <div class="product-warp">
+            <h1>Our Items</h1>
+            <div class="product-list">
+                <?php
+                if ($result->num_rows > 0) {
+                    $counter = 0; // Inisialisasi counter untuk produk
+                    while ($row = $result->fetch_assoc()) {
+                        if ($counter < 10) { // Menampilkan hanya 10 produk
+                            // Gunakan data yang diambil dari database di sini
+                            $productName = $row['shoes_name'];
+                            $price = $row['price'];
+                            $imagePath = '../admin/foto_database/' . $row['img_1']; // Ubah ini dengan nama kolom yang menyimpan path gambar di tabel Anda
+
+                            // Tampilkan data di HTML
+                ?>
+                            <div class="product-view">
+                                <img class="" src="<?php echo $imagePath; ?>" alt="">
+                                <div class="bawah">
+                                    <h3 class="judul"><?php echo $productName; ?></h3>
+                                    <div class="rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <p>5.0 - 28 Items sold</p>
+                                    </div>
+                                    <p><strong>IDR <?php echo $price; ?>,00</strong></p>
+                                </div>
+                            </div>
+                <?php
+                            $counter++; // Increment counter setelah menampilkan produk
+                        } else {
+                            break; // Hentikan loop setelah menampilkan 10 produk
+                        }
+                    }
+                } else {
+                    echo "Tidak ada data yang ditemukan";
+                }
+                ?>
+
+            </div>
+            <a href="./product.php"><button class="view-more">VIEW MORE</button></a>
         </div>
     </main>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="nav">
+                <div class="text-wrapper">Home</div>
+                <div class="text-wrapper-2">About</div>
+                <div class="text-wrapper-2">Store</div>
+                <div class="text-wrapper-2">Privacy Policy</div>
+                <div class="text-wrapper-2">FAQ</div>
+            </div>
+            <div class="social-media">
+                <div class="tittle">
+                    <p class="p">Keep in touch with us!</p>
+                </div>
+                <img class="logo" src="img/logo.svg" />
+            </div>
+            <div class="brand">
+                <div class="text-wrapper-3">Our Partners</div>
+                <div class="line">
+                    <img class="img" src="img/gg-adidas.svg" />
+                    <div class="frame-2"></div>
+                    <div class="frame-3"></div>
+                    <img class="img" src="img/simple-icons-nike.svg" />
+                    <div class="frame-4"></div>
+                </div>
+                <div class="line-2">
+                    <img class="img" src="img/simple-icons-puma.svg" />
+                    <img class="img" src="img/simple-icons-reebok.svg" />
+                    <div class="frame-5"></div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p class="COPYRIGHT-kicks">COPYRIGHT©2023 - Kicks &amp; Chic</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const judulElements = document.querySelectorAll('.judul');
+            const maxLength = 25; // Jumlah karakter maksimum yang diinginkan
+
+            judulElements.forEach(function(judulElement) {
+                if (judulElement.textContent.length > maxLength) {
+                    let trimmedString = judulElement.textContent.substring(0, maxLength);
+                    judulElement.textContent = trimmedString + '...';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
