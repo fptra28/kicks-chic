@@ -39,7 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssssssss", $nama, $brand, $details, $harga, $img_1_name, $img_2_name, $img_3_name, $img_4_name, $img_5_name);
 
     if ($stmt->execute()) {
-        echo "Data produk berhasil ditambahkan.";
+        echo '<script type="text/javascript">';
+        echo 'alert("Data produk berhasil ditambahkan.");';
+        echo '</script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
