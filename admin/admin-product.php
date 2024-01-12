@@ -1,7 +1,7 @@
 <?php
 include './koneksi-admin/koneksi-admin.php';
 
-$sql = "SELECT * FROM shoes";
+$sql = "SELECT * FROM shoes ORDER BY create_date DESC";
 $result = $conn->query($sql);
 
 if (isset($_GET['action'])) {

@@ -1,7 +1,7 @@
 <?php
 include './koneksi-user/koneksi-user.php';
 
-$sql = "SELECT * FROM shoes";
+$sql = "SELECT * FROM shoes ORDER BY create_date DESC";
 $result = $conn->query($sql);
 $count = 0;
 ?>
