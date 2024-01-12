@@ -66,7 +66,6 @@ $result = $conn->query($sql);
                     <div class="data">
                     <?php
                     if ($result->num_rows > 0) {
-                        // Output jumlah record
                         $row = $result->fetch_assoc();
                         echo $row["total_records"];
                     } else {

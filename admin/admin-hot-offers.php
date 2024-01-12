@@ -34,7 +34,7 @@
     </div>
     <main>
         <div class="title">
-            <h1>PRODUCT</h1>
+            <h1>HOT OFFERS</h1>
         </div>
         <div class="navigation">
             <input class="searchBar" type="text" id="searchInput" placeholder="Search product...">

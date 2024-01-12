@@ -242,7 +242,7 @@ td{
 /*Product Page*/
 .navigation {
     display: flex;
-    justify-content: space-between; /* Untuk menjaga jarak antara elemen */
+    justify-content: space-between; 
     align-items: center;
     padding: 20px;
     background-color: white;

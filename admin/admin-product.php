@@ -9,13 +9,9 @@ if (isset($_GET['action'])) {
     $product_id = $_GET['id'];
 
     if ($action == 'edit') {
-        // Lakukan sesuatu ketika tombol Edit ditekan
-        // Misalnya, arahkan ke halaman edit dengan ID produk yang sesuai
         header("Location: edit-product.php?id=$product_id");
         exit();
     } elseif ($action == 'delete') {
-        // Lakukan sesuatu ketika tombol Delete ditekan
-        // Misalnya, hapus produk dengan ID yang sesuai dari database
         include './koneksi-admin/koneksi-admin.php';
         $delete_sql = "DELETE FROM shoes WHERE shoes_name = $product_id";
 
@@ -33,7 +29,7 @@ if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
 
     $delete_product = $conn->prepare("DELETE FROM shoes WHERE shoes_name = ?");
-    $delete_product->bind_param('s', $delete_id); // 's' adalah tipe data string
+    $delete_product->bind_param('s', $delete_id);
     $delete_product->execute();
 
     if ($delete_product->affected_rows > 0) {
@@ -97,12 +93,9 @@ if (isset($_GET['delete'])) {
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    // Gunakan data yang diambil dari database di sini
                     $productName = $row['shoes_name'];
                     $price = $row['price'];
-                    $imagePath = './foto_database/' . $row['img_1']; // Ubah ini dengan nama kolom yang menyimpan path gambar di tabel Anda
-
-                    // Tampilkan data di HTML
+                    $imagePath = './foto_database/' . $row['img_1'];
             ?>
                     <div class="product-view">
                         <img class="" src="<?php echo $imagePath; ?>" alt="">

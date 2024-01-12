@@ -5,25 +5,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $nama = $_POST['ID_Admin'];
   $password = $_POST['admin_Pass'];
 
-  // Query ke database untuk memeriksa keberadaan admin
   $query = "SELECT * FROM admin_tables WHERE ID_Admin = '$nama' AND admin_Pass = '$password'";
   $result = mysqli_query($conn, $query);
 
-  // Jika data admin ditemukan, alihkan ke halaman admin yang diinginkan
   if (mysqli_num_rows($result) > 0) {
       $admin_data = mysqli_fetch_assoc($result);
 
       session_start();
       $_SESSION['ID_Admin'] = $admin_data['id'];
-      // Sesuaikan alihkan ke halaman yang diinginkan setelah login berhasil
       header("Location: admin-dashboard.php");
       exit();
   } else {
-      // Jika data admin tidak ditemukan, tampilkan pesan kesalahan
       $message = "Username atau password salah. Silakan coba lagi.";
+      
+      // Add JavaScript alert
+      echo '<script type="text/javascript">';
+      echo 'alert("' . $message . '");';
+      echo 'window.location.href = "login.php";'; // Redirect to login page or wherever you want
+      echo '</script>';
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

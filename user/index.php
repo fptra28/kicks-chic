@@ -54,15 +54,12 @@ $count = 0;
             <div class="product-list">
                 <?php
                 if ($result->num_rows > 0) {
-                    $counter = 0; // Inisialisasi counter untuk produk
+                    $counter = 0;
                     while ($row = $result->fetch_assoc()) {
-                        if ($counter < 10) { // Menampilkan hanya 10 produk
-                            // Gunakan data yang diambil dari database di sini
+                        if ($counter < 10) {
                             $productName = $row['shoes_name'];
                             $price = $row['price'];
-                            $imagePath = '../admin/foto_database/' . $row['img_1']; // Ubah ini dengan nama kolom yang menyimpan path gambar di tabel Anda
-
-                            // Tampilkan data di HTML
+                            $imagePath = '../admin/foto_database/' . $row['img_1'];
                 ?>
                             <div class="product-view">
                                 <img class="" src="<?php echo $imagePath; ?>" alt="">
@@ -76,9 +73,9 @@ $count = 0;
                                 </div>
                             </div>
                 <?php
-                            $counter++; // Increment counter setelah menampilkan produk
+                            $counter++;
                         } else {
-                            break; // Hentikan loop setelah menampilkan 10 produk
+                            break;
                         }
                     }
                 } else {
@@ -128,7 +125,7 @@ $count = 0;
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const judulElements = document.querySelectorAll('.judul');
-            const maxLength = 25; // Jumlah karakter maksimum yang diinginkan
+            const maxLength = 25;
 
             judulElements.forEach(function(judulElement) {
                 if (judulElement.textContent.length > maxLength) {
