@@ -133,11 +133,6 @@ button:hover{
 }
 
 input[type="checkbox"] {
-    /* Hide default checkbox */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* Add custom styles */
     width: 20px;
     height: 20px;
     border: 2px solid #000;
