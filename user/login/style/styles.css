@@ -44,8 +44,20 @@ body {
     width: 587px;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 60px;
     background-color: #E3DED1;
+    border-radius: 0px 30px 30px 0px;
+}
+
+.policy-right{
+    display: flex;
+    flex-direction: column;
+    width: 587px;
+    justify-content: center;
+    align-items: center;
+    background-color: #E3DED1;
+    gap: 20px;
+    padding: 25px 0px;
     border-radius: 0px 30px 30px 0px;
 }
 
@@ -55,13 +67,35 @@ body {
     width: 587px;
     justify-content: center;
     align-items: center;
+    gap: 25px;
     background-color: #E3DED1;
     border-radius: 0px 30px 30px 0px;
 }
 
-.right-form h1 {
+.forgot-right-form {
+    display: flex;
+    flex-direction: column;
+    width: 587px;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    background-color: #E3DED1;
+    border-radius: 0px 30px 30px 0px;
+}
+
+h2 {
     margin-bottom: 20px;
     text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form .button{
+    margin-top: 50px;
 }
 
 .form-container {
@@ -111,11 +145,20 @@ input[type="text"], input[type="email"], input[type="password"],input[type="tel"
 
 a{
     text-decoration: none;
-    color: blue;
+    color: rgb(255, 0, 0);
 }
 
 a:hover{
     color: #000;
+}
+
+.regis a{
+    text-decoration: none;
+    color: blue;
+}
+
+.regis a:hover{
+    color: black;
 }
 
 button{
@@ -132,16 +175,73 @@ button:hover{
     color: #fff;
 }
 
+.policy{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    border: 2px solid #000;
+    border: 1px solid #000;
     border-radius: 4px;
     outline: none;
     cursor: pointer;
 }
 
-input[type="checkbox"]:checked {
-    background-color: #4CAF50; /* Warna latar belakang ketika dicentang */
-    border-color: #000000; /* Warna border ketika dicentang */
+.content-container {
+    max-height: 545px;
+    overflow-y: auto;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 25px;
+}
+
+.content-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.content-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.content-container::-webkit-scrollbar-thumb {
+    background-color: #C1B59F;
+    border-radius: 6px;
+}
+
+.content-container::-webkit-scrollbar-thumb:hover {
+    background-color: #908471;
+}
+
+.policy-right p{
+    text-align: justify;
+    margin: 0px;
+}
+
+.back{
+    width: 100%;
+    padding-left: 35px;
+}
+
+.back a{
+    align-items: left;
+    text-decoration: none;
+    color: gray;
+}
+
+.forgot-right-form p{
+    color: gray;
+    text-align: center;
+}
+
+.forgot {
+    color: gray;
+}
+
+.forgot-right-form .back a{
+    text-align: left;
+    margin-left: 45px;
 }
