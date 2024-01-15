@@ -3,7 +3,6 @@ include './koneksi-user/koneksi-user.php';
 
 $sql = "SELECT * FROM shoes ORDER BY create_date DESC";
 $result = $conn->query($sql);
-$count = 0;
 ?>
 
 <!DOCTYPE html>
@@ -36,21 +35,28 @@ $count = 0;
             </div>
             <div class="line-gap"></div>
             <div class="profile">
-                <a href="./login/login.php">LOGIN NOW</a>
+                <i class="fas fa-user"></i>
             </div>
         </div>
     </nav>
     <main>
-        <div class="banner">
-            <img class="frame-kiri" src="../assets/Banner-1.jpg" />
-            <img class="frame-kanan" src="../assets/Promo-1.jpg" />
-        </div>
-        <div class="title">
-            <h1>WELCOME TO KICKS & CHIC</h1>
-            <p>Home of quality shoes from many brands</p>
+        <div class="filter">
+            <select name="brand" id="brand">
+                <option value="" selected disabled>Brand</option>
+                <option value="adidas">Adidas</option>
+                <option value="asics">Asics</option>
+                <option value="converse">converse</option>
+                <option value=""></option>
+                <option value="adidas">Adidas</option>
+                <option value="adidas">Adidas</option>
+                <option value="adidas">Adidas</option>
+                <option value="adidas">Adidas</option>
+                <option value="adidas">Adidas</option>
+                <option value="adidas">Adidas</option>
+            </select>
         </div>
         <div class="product-warp">
-            <h1>Our Items</h1>
+            <h1>Product</h1>
             <div class="product-list">
                 <div class="product-view">
                     <img class="" src="<?php echo $imagePath; ?>" alt="">
@@ -67,27 +73,22 @@ $count = 0;
                 if ($result->num_rows > 0) {
                     $counter = 0;
                     while ($row = $result->fetch_assoc()) {
-                        if ($counter < 9) {
-                            $productName = $row['shoes_name'];
-                            $price = $row['price'];
-                            $imagePath = '../admin/foto_database/' . $row['img_1'];
+                        $productName = $row['shoes_name'];
+                        $price = $row['price'];
+                        $imagePath = '../admin/foto_database/' . $row['img_1'];
                 ?>
-                            <div class="product-view">
-                                <img class="" src="<?php echo $imagePath; ?>" alt="">
-                                <div class="bawah">
-                                    <h3 class="judul"><?php echo $productName; ?></h3>
-                                    <div class="rating">
-                                        <i class="fas fa-star" style="color: gold;"></i>
-                                        <p>5.0 - 28 Items sold</p>
-                                    </div>
-                                    <p><strong>IDR <?php echo $price; ?>,00</strong></p>
+                        <div class="product-view">
+                            <img class="" src="<?php echo $imagePath; ?>" alt="">
+                            <div class="bawah">
+                                <h3 class="judul"><?php echo $productName; ?></h3>
+                                <div class="rating">
+                                    <i class="fas fa-star" style="color: gold;"></i>
+                                    <p>5.0 - 28 Items sold</p>
                                 </div>
+                                <p><strong>IDR <?php echo $price; ?>,00</strong></p>
                             </div>
+                        </div>
                 <?php
-                            $counter++;
-                        } else {
-                            break;
-                        }
                     }
                 } else {
                     echo "Tidak ada data yang ditemukan";
@@ -95,7 +96,6 @@ $count = 0;
                 ?>
 
             </div>
-            <a href="./product.php"><button class="view-more">VIEW MORE</button></a>
         </div>
     </main>
     <footer>

@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
         exit();
     } elseif ($action == 'delete') {
         include './koneksi-admin/koneksi-admin.php';
-        $delete_sql = "DELETE FROM shoes WHERE shoes_name = $product_id";
+        $delete_sql = "DELETE FROM shoes WHERE shoes_name = '$product_id'";
 
         if ($conn->query($delete_sql) === TRUE) {
             echo "Produk berhasil dihapus";
@@ -103,7 +103,7 @@ if (isset($_GET['delete'])) {
                         <div class="bawah">
                             <p><strong>IDR <?php echo $price; ?>,00</strong></p>
                             <div class="button-container">
-                                <button class="edit">Edit</button>
+                                <a href="admin-product.php?action=edit&id=<?php echo $productName; ?>"><button class="edit">Edit</button></a>
                                 <a href="admin-product.php?delete=<?php echo $row['shoes_name']; ?>"><button class="delete" id="delete">Delete</button></a>
                             </div>
                         </div>

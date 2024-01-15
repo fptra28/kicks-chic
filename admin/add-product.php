@@ -91,57 +91,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="add-product-form">
             <a href="./admin-product.php"><- BACK</a>
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class="form">
-                            <h3>Product Name</h3>
-                            <input type="text" name="shoes_name" id="shoes_name">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form">
+                    <h3>Product Name</h3>
+                    <input type="text" name="shoes_name" id="shoes_name">
+                </div>
+                <div class="form">
+                    <h3>Description</h3>
+                    <textarea name="details" id="details" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form">
+                    <h3>Upload Images (Require 5)</h3>
+                    <div class="img-container">
+                        <div class="img">
+                            <input type="file" name="img_1">
                         </div>
-                        <div class="form">
-                            <h3>Description</h3>
-                            <textarea name="details" id="details" cols="30" rows="10"></textarea>
+                        <div class="img">
+                            <input type="file" name="img_2">
                         </div>
-                        <div class="form">
-                            <h3>Upload Images (Require 5)</h3>
-                            <div class="img-container">
-                                <div class="img">
-                                    <input type="file" name="img_1">
-                                </div>
-                                <div class="img">
-                                    <input type="file" name="img_2">
-                                </div>
-                                <div class="img">
-                                    <input type="file" name="img_3">
-                                </div>
-                                <div class="img">
-                                    <input type="file" name="img_4">
-                                </div>
-                                <div class="img">
-                                    <input type="file" name="img_5">
-                                </div>
-                            </div>
+                        <div class="img">
+                            <input type="file" name="img_3">
                         </div>
-                        <div class="form">
-                            <h3>Brand</h3>
-                            <select class="brandlist" name="brand_shoes" id="brand_shoes">
-                                <option value="Adidas">Adidas</option>
-                                <option value="Asics">Asics</option>
-                                <option value="Converse">Converse</option>
-                                <option value="New Balance">New Balance</option>
-                                <option value="Nike">Nike</option>
-                                <option value="Onitsuka Tiger">Onitsuka Tiger</option>
-                                <option value="Puma">Puma</option>
-                                <option value="Reebok">Reebok</option>
-                                <option value="Vans">Vans</option>
-                            </select>
+                        <div class="img">
+                            <input type="file" name="img_4">
                         </div>
-                        <div class="form">
-                            <h3>Price</h3>
-                            <input type="text" name="price" id="price">
+                        <div class="img">
+                            <input type="file" name="img_5">
                         </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <h3>Brand</h3>
+                    <select class="brandlist" name="brand_shoes" id="brand_shoes">
+                        <option value="Adidas">Adidas</option>
+                        <option value="Asics">Asics</option>
+                        <option value="Converse">Converse</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Onitsuka Tiger">Onitsuka Tiger</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Reebok">Reebok</option>
+                        <option value="Vans">Vans</option>
+                    </select>
+                </div>
+                <div class="form">
+                    <h3>Price</h3>
+                    <input type="text" name="price" id="price">
+                </div>
 
-                        <a href="./admin-dashboard.php"><button type="submit" class="btn btn-primary" name="add_product">Add Product</button></a>
-                    </form>
-
+                <a href="./admin-dashboard.php"><button type="submit" class="btn btn-primary" name="add_product">Add Product</button></a>
+            </form>
         </div>
     </main>
 </body>
