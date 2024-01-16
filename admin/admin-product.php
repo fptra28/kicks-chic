@@ -42,6 +42,10 @@ if (isset($_GET['delete'])) {
     header('location:admin-product.php');
     exit();
 }
+
+function formatRupiah($price) {
+    return "IDR " . number_format($price, 0, ',', '.') . ",00";
+}
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +105,7 @@ if (isset($_GET['delete'])) {
                         <img class="" src="<?php echo $imagePath; ?>" alt="">
                         <h3><?php echo $productName; ?></h3>
                         <div class="bawah">
-                            <p><strong>IDR <?php echo $price; ?>,00</strong></p>
+                            <p><strong><?php echo formatRupiah($price); ?></strong></p>
                             <div class="button-container">
                                 <a href="admin-product.php?action=edit&id=<?php echo $productName; ?>"><button class="edit">Edit</button></a>
                                 <a href="admin-product.php?delete=<?php echo $row['shoes_name']; ?>"><button class="delete" id="delete">Delete</button></a>
@@ -116,6 +120,11 @@ if (isset($_GET['delete'])) {
             ?>
         </div>
     </main>
+    <script>
+        function formatRupiah($price) {
+            return "IDR ".number_format($price, 0, ',', '.').",00";
+        }
+    </script>
 </body>
 
 </html>

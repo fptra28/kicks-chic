@@ -3,6 +3,11 @@ include './koneksi-user/koneksi-user.php';
 
 $sql = "SELECT * FROM shoes ORDER BY create_date DESC";
 $result = $conn->query($sql);
+
+function formatRupiah($price)
+{
+    return "IDR " . number_format($price, 0, ',', '.') . ",00";
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +40,7 @@ $result = $conn->query($sql);
             </div>
             <div class="line-gap"></div>
             <div class="profile">
-                <i class="fas fa-user"></i>
+                <a href="./login/login.php"><button>LOGIN NOW</button></a>
             </div>
         </div>
     </nav>
@@ -43,32 +48,27 @@ $result = $conn->query($sql);
         <div class="filter">
             <select name="brand" id="brand">
                 <option value="" selected disabled>Brand</option>
-                <option value="adidas">Adidas</option>
-                <option value="asics">Asics</option>
-                <option value="converse">converse</option>
-                <option value=""></option>
-                <option value="adidas">Adidas</option>
-                <option value="adidas">Adidas</option>
-                <option value="adidas">Adidas</option>
-                <option value="adidas">Adidas</option>
-                <option value="adidas">Adidas</option>
-                <option value="adidas">Adidas</option>
+                <option value="Adidas">Adidas</option>
+                <option value="Asics">Asics</option>
+                <option value="Converse">Converse</option>
+                <option value="New Balance">New Balance</option>
+                <option value="Nike">Nike</option>
+                <option value="Onitsuka Tiger">Onitsuka Tiger</option>
+                <option value="Puma">Puma</option>
+                <option value="Reebok">Reebok</option>
+                <option value="Vans">Vans</option>
             </select>
+            <select name="brand" id="brand">
+                <option value="" selected disabled>Price</option>
+                <option value="low-2-high">Lowest to highest price</option>
+                <option value="high-2-low">highest to Lowest price</option>
+            </select>
+            <div class="pemisah"></div>
+            <button>More Filter</button>
         </div>
         <div class="product-warp">
             <h1>Product</h1>
             <div class="product-list">
-                <div class="product-view">
-                    <img class="" src="<?php echo $imagePath; ?>" alt="">
-                    <div class="bawah">
-                        <h3 class="judul"><?php echo $productName; ?></h3>
-                        <div class="rating">
-                            <i class="fas fa-star" style="color: gold;"></i>
-                            <p>5.0 - 28 Items sold</p>
-                        </div>
-                        <p><strong>IDR <?php echo $price; ?>,00</strong></p>
-                    </div>
-                </div>
                 <?php
                 if ($result->num_rows > 0) {
                     $counter = 0;
@@ -78,15 +78,17 @@ $result = $conn->query($sql);
                         $imagePath = '../admin/foto_database/' . $row['img_1'];
                 ?>
                         <div class="product-view">
-                            <img class="" src="<?php echo $imagePath; ?>" alt="">
-                            <div class="bawah">
-                                <h3 class="judul"><?php echo $productName; ?></h3>
-                                <div class="rating">
-                                    <i class="fas fa-star" style="color: gold;"></i>
-                                    <p>5.0 - 28 Items sold</p>
+                            <a href="details-product.php?id=<?php echo $productName; ?>">
+                                <img class="" src="<?php echo $imagePath; ?>" alt="">
+                                <div class="bawah">
+                                    <h3 class="judul"><?php echo $productName; ?></h3>
+                                    <div class="rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <p>5.0 - 28 Items sold</p>
+                                    </div>
+                                    <p><strong><?php echo formatRupiah($price); ?></strong></p>
                                 </div>
-                                <p><strong>IDR <?php echo $price; ?>,00</strong></p>
-                            </div>
+                            </a>
                         </div>
                 <?php
                     }
@@ -125,10 +127,11 @@ $result = $conn->query($sql);
                     <img class="img" src="../assets/adidas-logo.png" />
                     <img class="img" src="../assets/asics-logo.png" />
                     <img class="img" src="../assets/converse-logo.png" />
+                    <img class="img" src="../assets/nb-logo.png" />
                     <img class="img" src="../assets/nike-logo.png" />
-                    <img class="img" src="../assets/onit-logo.png" />
                 </div>
                 <div class="line">
+                    <img class="img" src="../assets/onit-logo.png" />
                     <img class="img" src="../assets/puma-logo.png" />
                     <img class="img" src="../assets/reebok-logo.png" />
                     <img class="img" src="../assets/vans-logo.png" />

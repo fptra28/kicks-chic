@@ -4,6 +4,10 @@ include './koneksi-user/koneksi-user.php';
 $sql = "SELECT * FROM shoes ORDER BY create_date DESC";
 $result = $conn->query($sql);
 $count = 0;
+
+function formatRupiah($price) {
+    return "IDR " . number_format($price, 0, ',', '.') . ",00";
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +40,7 @@ $count = 0;
             </div>
             <div class="line-gap"></div>
             <div class="profile">
-                <a href="./login/login.php">LOGIN NOW</a>
+                <a href="./login/login.php"><button>LOGIN NOW</button></a>
             </div>
         </div>
     </nav>
@@ -52,17 +56,6 @@ $count = 0;
         <div class="product-warp">
             <h1>Our Items</h1>
             <div class="product-list">
-                <div class="product-view">
-                    <img class="" src="<?php echo $imagePath; ?>" alt="">
-                    <div class="bawah">
-                        <h3 class="judul"><?php echo $productName; ?></h3>
-                        <div class="rating">
-                            <i class="fas fa-star" style="color: gold;"></i>
-                            <p>5.0 - 28 Items sold</p>
-                        </div>
-                        <p><strong>IDR <?php echo $price; ?>,00</strong></p>
-                    </div>
-                </div>
                 <?php
                 if ($result->num_rows > 0) {
                     $counter = 0;
@@ -80,7 +73,7 @@ $count = 0;
                                         <i class="fas fa-star" style="color: gold;"></i>
                                         <p>5.0 - 28 Items sold</p>
                                     </div>
-                                    <p><strong>IDR <?php echo $price; ?>,00</strong></p>
+                                    <p><strong><?php echo formatRupiah($price); ?></strong></p>
                                 </div>
                             </div>
                 <?php
@@ -125,10 +118,11 @@ $count = 0;
                     <img class="img" src="../assets/adidas-logo.png" />
                     <img class="img" src="../assets/asics-logo.png" />
                     <img class="img" src="../assets/converse-logo.png" />
+                    <img class="img" src="../assets/nb-logo.png" />
                     <img class="img" src="../assets/nike-logo.png" />
-                    <img class="img" src="../assets/onit-logo.png" />
                 </div>
                 <div class="line">
+                    <img class="img" src="../assets/onit-logo.png" />
                     <img class="img" src="../assets/puma-logo.png" />
                     <img class="img" src="../assets/reebok-logo.png" />
                     <img class="img" src="../assets/vans-logo.png" />
